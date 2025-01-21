@@ -224,30 +224,84 @@
 <head>
   <title>Сообщите нам о страховом случае</title>
 </head>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Страховая форма</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+  <script src="{{ url_for('static', filename='js/jquery-3.6.0.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/form_validation.js') }}"></script>
+</head>
 <body>
-  <h1>Сообщите нам о страховом случае</h1>
-  <form>
-    <label for="name">ФИО:</label>
-    <input type="text" id="name">
-    <br>
-    <label for="phone">Телефон для обратной связи:</label>
-    <input type="tel" id="phone">
-    <br>
-    <label for="policy_number">Номер полиса:</label>
-    <input type="number" id="policy_number">
-    <br>
-    <input type="submit" value="Отправить">
-  </form>
-</body>
-</html>
-     </div>
-      <div class="form-group">
-        <div class="col-sm-offset-2 col-sm-10">
-          <button type="submit" class="btn btn-primary">Отправить</button>
+  <div class="container">
+    <h1>Страховая форма</h1>
+    <form method="POST" action="{{ url_for('submit_form') }}">
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label for="name" class="col-sm-2 control-label">ФИО</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="name" name="name" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="phone" class="col-sm-2 control-label">Телефон</label>
+            <div class="col-sm-10">
+              <input type="tel" class="form-control" id="phone" name="phone" pattern="[0-9]{11}" required>
+              <span class="help-block">В формате +7XXXXXXXXXX</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email" class="col-sm-2 control-label">Email</label>
+            <div class="col-sm-10">
+              <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="contract_number" class="col-sm-2 control-label">Номер договора</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="contract_number" name="contract_number" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="contract_start_date" class="col-sm-2 control-label">Дата начала действия договора</label>
+            <div class="col-sm-10">
+              <input type="date" class="form-control" id="contract_start_date" name="contract_start_date" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="contract_end_date" class="col-sm-2 control-label">Дата окончания действия договора</label>
+            <div class="col-sm-10">
+              <input type="date" class="form-control" id="contract_end_date" name="contract_end_date" required>
+            </div>
+          </div>
         </div>
-      </div>
-    </form>
-  </div>
-</body>
-</html>
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label for="incident_date" class="col-sm-2 control-label">Дата страхового случая</label>
+            <div class="col-sm-10">
+              <input type="date" class="form-control" id="incident_date" name="incident_date" required>
+              <span class="help-block" id="incident_date_error"></span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="incident_description" class="col-sm-2 control-label">Описание страхового случая</label>
+            <div class="col-sm-10">
+              <textarea class="form-control" id="incident_description" name="incident_description" rows="5" required></textarea>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="incident_amount" class="col-sm-2 control-label">Сумма страхового случая</label>
+            <div class="col-sm-10">
+              <input type="number" class="form-control" id="incident_amount" name="incident_amount" min="0" step="0.01" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="incident_documents" class="col-sm-2 control-label">Документы, подтверждающие страховой случай</label>
+            <div class="col-sm-10">
+              <input type="file" class="form-control" id="incident_documents" name="incident_documents" multiple>
+            </div>
+          </div>
+        </div>
 
