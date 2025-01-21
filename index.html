@@ -107,10 +107,7 @@
     const policyEndDate = new Date(today.setFullYear(today.getFullYear() + 1));
     document.getElementById('policy-end-date').value = policyEndDate.toISOString().split('T')[0];
 
-    // Генерация даты страхового случая (случайным образом в течение года после даты договора)
-    const incidentDate = new Date(contractDate);
-    incidentDate.setDate(contractDate.getDate() + Math.floor(Math.random() * 365));
-    document.getElementById('incident-date').value = incidentDate.toISOString().split('T')[0];
+
   }
 </script>
     <h2 id="calculation">Расчет суммы страхования</h2>
@@ -235,7 +232,7 @@
 </head>
 <body>
   <div class="container">
-    <h1>Страховая форма</h1>
+    <h1>Сообщите нам о страховом случае</h1>
     <form method="POST" action="{{ url_for('submit_form') }}">
       <div class="row">
         <div class="col-sm-6">
