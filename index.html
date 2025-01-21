@@ -179,7 +179,7 @@
 
 <!-- Новые строки -->
 <div>
-  <label for="contract-date">Дата договора:</label>
+  <label for="contract-date">Дата начала действия полиса:</label>
   <input type="date" id="contract-date">
 </div>
 <div>
@@ -201,7 +201,7 @@
     // Получение текущей даты
     const today = new Date();
 
-    // Генерация даты договора
+    // Генерация Даты начала действия полиса
     const contractDate = today.toISOString().split('T')[0];
     document.getElementById('contract-date').value = contractDate;
 
@@ -231,7 +231,7 @@
   <form>
     <div>
       <label for="contract-date">Дата договора:</label>
-      <input type="date" id="contract-date">
+      <input type="date" id="contract-date2">
     </div>
     <div>
       <label for="contract-number">Номер договора:</label>
@@ -250,7 +250,7 @@
   <script>
     function checkDate() {
       // Получаем введенные пользователем даты
-      const contractDate = new Date(document.getElementById("contract-date").value);
+      const contractDate = new Date(document.getElementById("contract-date2").value);
       const incidentDate = new Date(document.getElementById("incident-date").value);
 
       // Проверяем, является ли дата страхового случая раньше даты договора
